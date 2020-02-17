@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+    {% include "index.js" %}
+</script>
+<header class="title_background">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="jumbotron">
+			 	<h1 class="display-4">UNSW Event Manager</h1>
+			 	<hr class="my-4">
+				<p>The University of New South Wales (UNSW; branded as UNSW Sydney) is an Australian public research university located in the Sydney suburb of Kensington.
+				</p>
+			</div>
+			<div class="scroll_down_button">
+				<div class="container">
+				  <div class="chevron"></div>
+				  <div class="chevron"></div>
+				  <div class="chevron"></div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</header>
+
+<section class="content">
+	{% with mapping=mapping %}
+	{% include "list_events.html" %}
+	{% endwith %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+.profile_main {
+	margin-top: 30px;
+}
+
+.profile_photo {
+	margin-bottom: 30px;
+}
+
+.profile_header {
+	text-align: center;
+}
+
+.profile-description {
+	min-height: 500px;
+}
+
+.profile-container {
+	margin-bottom: 15px;
+}

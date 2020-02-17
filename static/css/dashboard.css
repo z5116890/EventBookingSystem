@@ -1,0 +1,23 @@
+.body_background {
+  padding-left: 40px;
+  position: relative;
+  height: 300px;
+  background-image: url('{{ url_for('static', filename='img/background-Image.png') }}');
+  background-attachment: fixed; 
+  background-size: cover;
+}
+
+.body_background .jumbotron {
+  width: 30%;
+  top: 80px;
+  margin: auto 0px;
+  margin-left: 100px;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  padding-top: 50px;
+}

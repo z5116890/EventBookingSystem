@@ -1,0 +1,147 @@
+* {
+	font-size: 100%;
+	font-family: Sans-serif;
+}
+
+figure {
+	margin: auto;
+}
+
+img {
+	max-width: 100%;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.body_content {
+	position: relative;
+	z-index: 2;
+	background-color: white;
+	margin-bottom: 100px;
+}
+
+.title_background {
+	padding-left: 40px;
+	position: relative;
+	height: 810px;
+	background-image: url('{{ url_for('static', filename='img/background-Image.png') }}');
+	background-attachment: fixed; 
+  background-size: cover;
+}
+
+.dropdown {
+  padding-left: 3px;
+}
+
+.title_background .jumbotron {
+	width: 80%;
+	top: 200px;
+	margin: auto 0px;
+	/*margin-left: 100px;*/
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor: pointer;
+}
+
+footer {
+	background: black;
+	color: white;
+	padding: 40px 0;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+footer .footer-stuff {
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+footer a {
+	color: white
+}
+
+.scroll_down_button {
+	width: 80%;
+	top: 200px;
+	margin: auto 0px;
+	position: relative;
+	opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll_down_button.is-showing {
+	opacity: 1;
+}
+
+
+.scroll_down_button .container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #fff;
+}
+
+.chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+
+

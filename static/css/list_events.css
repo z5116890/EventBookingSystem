@@ -1,0 +1,122 @@
+.content article {
+	padding: 100px 0;
+	max-width: 640px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.content article {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.content h1 {
+	color: #ccc;
+	weight: 300;
+}
+
+.event_item_info .fa-map-marker {
+	margin-left: 1.5px;
+}
+
+.list_events_body figure {
+	opacity: 0;
+	position: relative;
+	transform: translateX(-20px);
+	transition: all 0.5s ease-in-out;
+}
+
+.box-shadow {
+	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+.list_events_body figure.is-showing {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+.list_events_body figure:hover {
+	position: relative;
+	transform: translateY(-10px);
+}
+
+.events_page .progress {
+	margin: 7px auto;
+	width: 90%;
+}
+
+.list_events {
+	min-height: 800px;
+}
+
+.events_row {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.list_events_footer {
+	min-height: 100px;
+	opacity: 0;
+	transition: all 1s ease-in-out;
+}
+
+.list_events_footer.is-showing {
+	opacity: 1;
+}
+
+.loading_button {
+	position: relative;
+	margin: 0px auto;
+	text-align: center;
+	font-size: 60px;
+	cursor: pointer;
+}
+
+.list_events_footer .no_more {
+	padding-top: 30px;
+	position: relative;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.loading_button .fa-angle-left:hover {
+	transition: all 0.2s ease-in-out;
+	transform: translateX(-10px);
+}
+
+.loading_button .fa-angle-right:hover {
+	transition: all 0.2s ease-in-out;
+	transform: translateX(10px);
+}
+
+.filter-group {
+  margin: auto 0px;
+  text-align: center;
+}
+
+.filter-group-input {
+    display:none;
+}
+
+.filter-group-label:hover {
+    transform: translateY(-7px);
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-group-label {
+  padding:10px;
+  width: 30%;
+  text-align:center;
+  background:#ffffff;
+  box-shadow: 0 0.25rem 1.75rem rgba(0, 0, 0, .2);
+  color:#222222;
+  cursor:pointer;
+  border-radius: 20px;
+}
+.filter-group-input:checked + .filter-group-label {
+  background:#6666ff;
+  color: white;
+}

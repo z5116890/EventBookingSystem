@@ -1,0 +1,58 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="login_modal_Label">Login</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="login_form" method="POST" action="/login">
+        <div class="form-group row">
+          <label for="input_zid" class="col-sm-5 col-form-label">ZID</label>
+          <div class="col-sm-7">
+            <input class="form-control" name="zid" id="input_zid" placeholder="Please enter your ZID" required>
+          </div>
+          {% if type == 'not exist' %}
+          <div class="alert alert-danger alert-dismissible fade show col-sm-12" role="alert">
+            User does not exist.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group row">
+          <label for="input_password" class="col-sm-5 col-form-label">Password</label>
+          <div class="col-sm-7">
+            <input type="password" name="password" class="form-control" id="input_password" placeholder="Password" required>
+          </div>
+          {% if type == 'wrong password' %}
+          <div class="alert alert-danger alert-dismissible fade show col-sm-12" role="alert">
+            {% if attempt_times != 5 %}
+            Wrong password, please try again. You have {{5 - attempt_times}} times of attempt left.
+            {% else %}
+            Account has been locked. Please press “forgot my password” to reset your password.
+            {% endif %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %}
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="guest_login_checkbox">
+          <label class="form-check-label" for="guest_login_checkbox">Guest Login</label>
+        </div>    
+        <div style="float: right;">
+          <a href="/reset_password_notification">forgot my password</a>
+        </div>    
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="submit" form="login_form" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</div>

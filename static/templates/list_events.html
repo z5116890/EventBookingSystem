@@ -1,0 +1,20 @@
+<div class="list_events">
+	<article class="list_events_filter">
+		<div class="filter-group">
+			{% for m in mapping %}
+			<input class="filter-group-input" type="radio" id="{{m[0]}}" name="color" />
+			<label class="filter-group-label" data-filter="{{m[1]}}" for="{{m[0]}}">{{m[0]}}</label>
+			{% endfor %}
+		</div>
+		<hr>
+	</article>
+	<div class="list_events_content" data-page="{{mapping[0][1]}}_0">
+		<div class="list_events_body">
+		</div>
+		<div class="list_events_footer">
+			<div class="loading_button">
+				<i class="fa fa-spinner fa-spin" style="font-size:48px"></i>
+			</div>
+		</div>
+	</div>
+</div>

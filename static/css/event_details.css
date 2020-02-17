@@ -1,0 +1,143 @@
+.event-description {
+  margin-bottom: 4rem;
+}
+.event-description-title {
+  margin-bottom: .25rem;
+  font-size: 2.5rem;
+}
+.event-description-meta {
+  margin-bottom: 1.25rem;
+  color: #999;
+}
+
+.event-container {
+  margin-top: 30px;
+  padding-top: 0px;
+}
+
+.glyphicon.glyphicon-chevron-right{
+   color:red;
+}
+
+.event_sidebar {
+  padding-left: 20px;
+  padding-top: 70px;
+}
+
+.date-view {
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+#carousel-albums img {
+  object-fit: cover;
+}
+
+.date-body {
+  display: inline-block;
+  text-align: center;
+  background: #f6f7f8;
+  border: 1px solid rgba(46,62,72,.12);
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
+  padding-top: 4px;
+}
+.date-body .date-month {
+    display: block;
+    color: rgba(46,62,72,.6);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: .85rem;
+}
+
+.date-body .date-day {
+  display: block;
+  text-align: center;
+  line-height: 1.1;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  color: #f13a59;
+  font-size: 20px;
+}
+
+.session_detail {
+  animation: 1s ease-in-out 0s 1 showing;
+}
+
+@keyframes showing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#prev-session:hover {
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-5px);
+}
+
+#next-session:hover {
+  transition: all 0.2s ease-in-out;
+  transform: translateX(5px);
+}
+
+.event-photo {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.event-photo:hover {
+  opacity: 0.7;
+}
+
+.photo-modal {
+    z-index: 99999999;
+    display: none;
+    position: fixed;
+    padding-top: 200px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.photo-modal .modal-content {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+}
+
+.photo-modal .modal-content { 
+    animation: 0.6s ease-in-out 0s 1 zoom;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+.photo-modal .close-button {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    color: grey;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.photo-modal .close-button:hover,
+.photo-modal .close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,95 @@
+<div class="event_sidebar sticky-top">
+	<div class="row">
+		<div class="col card flex-md-row mb-4 box-shadow h-md-250">
+			<div class="card-body d-flex flex-column align-items-start">
+				<div class="event_sidebar_basic" style="width: 100%">
+					<div class="row mb-3">
+						<div class="col-md-2">
+							<i class="fas fa-clock"></i>
+						</div>
+						<div class="col-md-10">
+							<div class="mb-1 text-muted">{{event.start_time | DateString}} - {{event.end_time | DateString }}</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-2">
+							<i class="fas fa-map-marker"></i>
+						</div>
+						<div class="col-md-10">
+							{% if event is CourseEvent %}
+							<div class="mb-1 text-muted">{{event.event_sessions[0].venue.name}}, {{event.event_sessions[0].venue.location}}</div>
+							{% else %}
+							<div class="mb-1 text-muted">Multiple Locations</div>
+							{% endif %}
+						</div>
+					</div>
+
+				</div>
+				<hr style="width: 100%; color: grey; height: 0.3px; background-color:grey; opacity: 0.5" />
+				<div class="event_sidebar_convenor" style="width: 100%">
+					<div class="row">
+						<div class="col-md-4">
+							<img src={{ url_for('static', filename='img/thumbnail_default.jpg') }} alt="..." class="rounded-circle" height="70" width="70" style="margin-left: 10px;">
+						</div>
+						<div class="col-md-8" style="padding-top: 10px;">
+							<div class="row">
+								<div class="col">
+									<span class="text-muted">
+										Hosted by
+									</span>
+									<a href='#'>{{event.convenor.name}}</a>
+								</div>
+								<div class="w-100"></div>
+								<div class="col">
+									<span class="text-muted">
+										From
+									</span>
+									<a href="#">UNSW</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="event_sidebar_sessions" style="width: 100%">
+					<div class="card text-center">
+						<div class="card-header">
+					    <i id="prev-session" class="fas fa-angle-left" style="padding-right: 5px; cursor: pointer;"></i>
+					    <span id="session_idx">session {{session_idx}}</span>
+					    <i id="next-session" class="fas fa-angle-right" style="padding-left: 5px; cursor: pointer;"></i>
+					  </div>
+					  <div class="card-body">
+					  	<div id="event_session">
+								<i class="fa fa-spinner fa-spin" style="font-size:48px"></i>
+							</div>
+						</div>
+						<div id="attend_button" class="card-footer text-muted">
+							<i class="fa fa-spinner fa-spin" style="font-size:48px"></i>
+						</div>
+					</div>
+				</div>
+				{% if event.convenor is IsConvenor %}
+				<hr style="width: 100%; color: grey; height: 0.2px; background-color:grey; opacity: 0.5" />
+				<div style="width: 100%;">
+					{% if event.end_time is PastDate and event.status == 0 %}
+					<form action="/close_event" method="POST">
+						<button name="close_button" value={{event.id}} type="submit" class="btn btn-warning" style="width: 100%;">Close Event</button>
+					</form>
+					{% endif %}
+					{% if event.status == 2 and event.start_time is not PastDate %}
+					<form action="/reopen_event" method="POST">
+						<button name="reopen_button" value={{event.id}} type="submit" class="btn btn-info" style="width: 100%;">Reopen Event</button>
+					</form>
+					{% endif %}	
+					{% if event.start_time is not PastDate and event.status == 0 %}
+					<form action="/cancel_event" method="POST" style="margin-top: 5px;">
+						<button name="cancel_button" value={{event.id}} type="submit" class="btn btn-dark" style="width: 100%;">Cancel Event</button>
+					</form>
+					{% endif %}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>	

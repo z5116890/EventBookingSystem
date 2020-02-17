@@ -1,0 +1,61 @@
+.navbar-nav a::after {
+	content: '';
+	display: block;
+	height: 5px;
+	width: 0%;
+	background-color: #444;
+	transition: all ease-in-out 200ms;
+}
+
+.bg-dark .navbar-nav a::after {
+	background-color: white;
+}
+
+.navbar-nav a:hover::after {
+	width: 100%
+}
+
+
+.bg-dark .navbar-nav .nav-item:hover .nav-link {
+    color: white;
+}
+
+.navbar {
+	background-color: #e3f2fd;
+	transition: 0.3s;
+	z-index: 2000;
+}
+
+.bg-dark {
+	color: white;
+}
+
+.bg-dark .navbar-nav .nav-link {
+	color: white;
+}
+
+.bg-dark .navbar-nav .active>.nav-link {
+	color: white
+}
+
+#login_modal .alert {
+	top: 5px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#login_modal .alert button {
+    padding-top: 5px;
+}
+
+#signin_modal .alert {
+	top: 5px;
+    margin-bottom: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#signin_modal .alert button {
+    padding-top: 5px;
+}

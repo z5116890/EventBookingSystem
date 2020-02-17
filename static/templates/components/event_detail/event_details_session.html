@@ -1,0 +1,55 @@
+<div class="session_detail">
+	<div class="row {{session.id}}-{{attended}}">
+		<div class="col-md-3">
+			<div class="date-view row">
+				<div class="date-body">
+	      <span class="date-day">
+	        <span style="display: inline;">{{session.start_time.day}}</span>
+	      </span>
+		      <span class="date-month">
+		        <span style="display: inline;">{{session.start_time.month | MonthString}}</span>
+		       </span>
+		    </div>
+			</div>
+		</div>
+		<div class="col-md-9">
+	    <div class="card-text">
+	    	<div class="row">
+	    		<div class="col text-muted">
+	    			<div>
+	    				{{session.start_time | TimeString}} - {{session.end_time | TimeString}}
+	    			</div>
+					<div>
+						<div class="col text-muted">
+			    			Speaker: 
+			    			{% if session.speaker is Guest %}
+			    			<a href="/profile/{{session.speaker.id}}">{{session.speaker.name}}</a>
+			    			{% else %}
+			    			<a>{{session.speaker.name}}</a>
+			    			{% endif %}
+						</div>
+					</div>
+					<div class="w-100">
+						Venue: {{session.venue.name}}
+					</div>
+		    	</div>
+		    </div>
+	  	</div>
+		</div>
+	</div>
+	<div class="progress">
+		{% if attendance < 25 %}
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{session.users_attendance | length}}" aria-valuemin="0" aria-valuemax="{{session.capacity}}" style="width: {{attendance}}%">{{session.capacity - session.users_attendance | length}} Spaces Left
+			</div>
+		{% elif attendance < 50 %}
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="{{session.users_attendance | length}}" aria-valuemin="0" aria-valuemax="{{session.capacity}}" style="width: {{attendance}}%">{{session.capacity - session.users_attendance | length}} Spaces Left
+			</div>
+		{% elif attendance < 75 %}
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="{{session.users_attendance | length}}" aria-valuemin="0" aria-valuemax="{{session.capacity}}" style="width: {{attendance}}%">{{session.capacity - session.users_attendance | length}} Spaces Left
+			</div>		
+		{% else %}
+			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="{{session.users_attendance | length}}" aria-valuemin="0" aria-valuemax="{{session.capacity}}" style="width: {{attendance}}%">{{session.capacity - session.users_attendance | length}} Spaces Left
+			</div>
+		{% endif %}
+	</div>
+</div>

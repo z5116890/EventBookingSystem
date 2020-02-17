@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    {% include "login_form.js" %}
+</script>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if current_user.is_authenticated == True %}
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+      </li>
+      {% if current_user is Staff %}
+      <li class="nav-item">
+        <a class="nav-link" href="/add_event">Add Event</a>
+      </li>
+      {% endif %}
+      {% endif %}
+    </ul>
+    <div class="form-inline my-2 my-lg-0">    
+      {% if current_user.is_authenticated == True %}
+      <span style="margin-right: 10px">Hi, {{ current_user.name  }}</span>
+      <form id='logout' method="POST" action="/logout">
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0" name="logout" value="logout">
+        Logout
+        </button>
+      </form>
+      {% else %}
+      <button type="button" class="btn btn-outline-primary my-2 my-sm-0 mr-2" data-toggle="modal" data-target="#signin_modal">
+        Guest User
+      </button>        
+      <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#login_modal">
+        Login
+      </button>      
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+{% if current_user.is_authenticated == False %}
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="login_modal_Label" aria-hidden="true">
+  {% include "login_modal.html" %}
+</div>
+<div class="modal fade" id="signin_modal" tabindex="-1" role="dialog" aria-labelledby="signin_modal_Label" aria-hidden="true">
+  {% include "signin_modal.html" %}
+</div>
+{% endif %}

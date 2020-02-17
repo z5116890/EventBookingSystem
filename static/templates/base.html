@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>UNSW Event Manager</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+	    <style type="text/css">
+	    	{% include "main.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "nav_bar.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "list_events.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "event_details.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "dashboard.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "reset_password.css" %}
+	    </style>
+	    <style type="text/css">
+	    	{% include "profile.css" %}
+	    </style>	    
+		<script type="text/javascript">
+		    {% include "list_events.js" %}
+		</script>	    
+	</head>
+
+	<body>
+		{% include "navbar.html" %}
+		<div class="body_content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		{% include "confirm_modal.html" %}
+		{% include "footer.html" %}
+		{% include "event_modal.html" %}
+		{% include "logout_modal.html" %}
+	</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body_contents %}
+<form method="POST" action="login">
+	<p>
+	<input placeholder="Username" name="zid" style="width: 200px; height:33px;" >
+	<p>
+	<input placeholder="Password" style="width: 200px; height:33px;" type="password" name="password" >
+	<p>
+	<button style="position:relative; top:0px; left:0px; type="submit" class="btn btn-info"><i class="fa fa-share"></i>Login</button>
+</form>
+
+{% endblock %}

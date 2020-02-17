@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+    {% include "profile.js" %}
+</script>
+<header class="body_background">
+	<div class="jumbotron pull-right">
+	 	<h1 class="display-4">Profiles</h1>
+	</div>
+</header>
+
+<div class="container profile-container">
+	<div class="row">
+		<div class="col-md-12 profile_main">
+			<div class="profile_header border-bottom">
+				<h1 class="pb-3 mb-4">{{guest.name}}</h1>
+				<div class="profile_photo">
+					<img src={{ url_for('static', filename='img/thumbnail_default.jpg') }} alt="..." class="rounded-circle" height="100" width="100">
+				</div>
+			</div>
+			<div class="col-md-12 profile-description">
+				{{guest.description}}
+			</div>	
+		</div>
+	</div>
+</div>
+
+{% with mapping=mapping %}
+{% include "list_events.html" %}
+{% endwith %}
+
+{% endblock %}

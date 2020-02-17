@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<script type="text/javascript">
+    {% include "dashboard.js" %}
+</script>
+<header class="body_background">
+	<div class="jumbotron pull-right">
+	 	<h1 class="display-4">Dashboard</h1>
+ 		<hr>
+		<p>Manage your events
+		</p>
+	</div>
+</header>
+<section class="content">
+	{% with mapping=mapping %}
+	{% include "list_events.html" %}
+	{% endwith %}
+</section>
+{% endblock %}

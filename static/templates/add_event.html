@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    #addevent{
+        padding: 25px 25px;
+    }
+    .title-emph {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+    #addevent .row {
+        margin-top: 25px;
+    }
+    #addevent .submit-row {
+        margin-top: 50px;
+    }
+    form div.col-md:first-child {
+        border-right: 1px solid #ddd;
+    }
+    #session-list tbody {
+        cursor: pointer;
+    }
+    #event-session-add {
+        text-align: center;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.4/jquery.typeahead.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-typeahead/2.10.4/jquery.typeahead.min.js"></script>
+
+<div id="addevent">
+    <h1 class="title-emph">Add Event</h1>
+
+    <div class="alert alert-danger" style="display: none" role="alert" id="event-err"></div>
+
+    <form action="add_event" method="post" id="event-form">
+        <div class="row">
+            <div class="col-md" id="event-det">
+                <h3>Event Details</h3>
+                <div class="form-group">
+                    <label for="event-name">Event Name</label>
+                    <input class="form-control" id="event-name" type="text" name="name" placeholder="Name" required>
+                </div> 
+                <div class="form-group">
+                    <label for="event-desc">Event Description</label>
+                    <textarea class="form-control" id="event-desc" name="desc"></textarea>
+                </div> 
+                <div class="form-group">
+                    <!-- todo: write a small framework to make this better -->
+                    <label for="event-cover">Event Cover Photo (Optional)</label>
+                    <input class="form-control" id="event-cover" name="cover" type="file">
+                </div> 
+                <div class="form-group">
+                    <!-- todo: write a small framework to make this better -->
+                    <label for="event-album">Event Photos (Optional)</label>
+                    <input class="form-control" id="event-album" name="album[]" type="file" multiple>
+                </div> 
+                <div class="form-group">
+                    <label for="event-type">Event Type</label>
+                    <select id="event-type" name="type" class="form-control" required>
+                        <option value="course">Course Event</option>
+                        <option value="seminar">Seminar Event</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="event-deregister">Deregistration Timeframe (days)</label>
+                    <input id="event-deregister" class="form-control" name="deregister" value="0" type="number" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-earlybird">Early Bird (days)</label>
+                    <input id="event-earlybird" class="form-control" name="earlybird" value="0" type="number" required>
+                </div>
+            </div>
+            <div class="col-md" id="event-session-det">
+                <h3>Session Details</h3>
+                <input type="hidden" id="event-session" name="session" value="">
+                <div data-event-type="seminar" style="display: none">
+                    {% include "event_session_table.html" %}
+                </div>
+                <div data-event-type="course">
+                    {% include "event_session.html" %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center submit-row">
+            <div class="col-md-2">
+                <input type="submit" value="Add Event" class="btn btn-block btn-outline-dark">
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/addEvent.old.js') }}"></script>
+
+{% endblock %}
+<!-- The modal is placed outside the block so it renders correctly -->
